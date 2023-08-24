@@ -1,0 +1,16 @@
+pure_pursuit:
+  ros__parameters:
+    # Constants
+    wheelbase: 0.3302
+    lookahead_distance: 0.82461887897713965
+    sprint_speed: 4.0
+    velocity_gain: 1.375
+    max_reacquire: 20.0
+    waypoint_path: "waypoints/example_waypoints.csv"
+
+    # Topic 
+    scan_topic: /scan 
+    odom_topic: /odom 
+    drive_topic: /drive
+    tf_topic: /tf_static
+    joy_topic: /joy
