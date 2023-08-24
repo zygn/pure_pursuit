@@ -9,7 +9,7 @@ mkdir -p f1tenth_ws/src
 cd f1tenth_ws/src
 ```
 
-2. Clone this workspace and checkout noetic branch and, build with catkin
+2. Clone this repository in your workspace and checkout noetic branch and, build with catkin
 ```bash
 git clone https://github.com/zygn/pure_pursuit
 cd pure_pursuit
