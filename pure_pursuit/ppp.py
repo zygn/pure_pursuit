@@ -148,6 +148,10 @@ class PurePursuitPlanner:
         self.waypoints = []
         self.drawn_waypoints = []
 
+        self.wpt_vind = 5
+        self.wpt_xind = 1
+        self.wpt_yind = 2
+
         self.load_waypoints()
 
     def load_waypoints(self):
@@ -161,7 +165,7 @@ class PurePursuitPlanner:
         """
         gets the current waypoint to follow
         """
-        wpts = np.vstack((self.waypoints[:, self.conf.wpt_xind], self.waypoints[:, self.conf.wpt_yind])).T
+        wpts = np.vstack((self.waypoints[:, self.wpt_xind], self.waypoints[:, self.wpt_yind])).T
         nearest_point, nearest_dist, t, i = nearest_point_on_trajectory(position, wpts)
         if nearest_dist < lookahead_distance:
             lookahead_point, i2, t2 = first_point_on_trajectory_intersecting_circle(position, lookahead_distance, wpts, i+t, wrap=True)
@@ -171,10 +175,10 @@ class PurePursuitPlanner:
             # x, y
             current_waypoint[0:2] = wpts[i2, :]
             # speed
-            current_waypoint[2] = waypoints[i, self.conf.wpt_vind]
+            current_waypoint[2] = waypoints[i, self.wpt_vind]
             return current_waypoint
         elif nearest_dist < self.max_reacquire:
-            return np.append(wpts[i, :], waypoints[i, self.conf.wpt_vind])
+            return np.append(wpts[i, :], waypoints[i, self.wpt_vind])
         else:
             return None
 
