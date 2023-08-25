@@ -36,7 +36,7 @@ class Racecar:
             wp=self.waypoint_path
         )
 
-        self.odom_data = None
+        self.odom_data = {}
 
     def publish_callback(self):
 
